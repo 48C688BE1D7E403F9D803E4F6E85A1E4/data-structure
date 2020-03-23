@@ -15,6 +15,7 @@ public class MySequentitalListTest {
         }
 
         sl.traversal(e -> System.out.print(e + " "));
+        System.out.println();
 
         Integer n = 1;
         for (Integer x : sl) {
@@ -22,5 +23,10 @@ public class MySequentitalListTest {
         }
 
         Assert.assertTrue(n == N + 1);
+
+        List<String> list = new MySequentialList<>();
+        list.insert("AA");
+        list.insert("BB");
+        list.traversal(e -> System.out.print(e + " "));
     }
 }

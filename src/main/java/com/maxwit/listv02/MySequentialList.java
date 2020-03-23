@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
-public class MySequentialList<T> implements Iterable<T> {
+public class MySequentialList<T> implements Iterable<T>, List<T> {
     private Object[] eleData;
     private int size;
     private int capacity;
@@ -41,7 +41,8 @@ public class MySequentialList<T> implements Iterable<T> {
         return size + 1;
     }
 
-    public Boolean insert(int data) {
+    @Override
+    public Boolean insert(T data) {
         if (isCapacity())
             capacityData();
 
@@ -50,7 +51,7 @@ public class MySequentialList<T> implements Iterable<T> {
         return true;
     }
 
-    public Boolean insert(int index, int data) {
+    public Boolean insert(int index, T data) {
         if (index > size || index < 0)
             throw new IndexOutOfBoundsException("Out Of Bound Exception");
 
@@ -80,6 +81,7 @@ public class MySequentialList<T> implements Iterable<T> {
         return true;
     }
 
+    @Override
     public void traversal(Consumer<T> visit) {
         for (int i = 0; i < size; i++) {
             visit.accept((T) eleData[i]);
